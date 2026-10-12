@@ -23,12 +23,13 @@ jobs:
           distribution: 'corretto'
 
       # 3. Maven 빌드
+      - name: Set up JDK 11 for Maven build
+        uses: actions/setup-java@v4
+        with:
+          java-version: '11'
+          distribution: 'corretto'
+
       - name: Build WebGoat JAR
-        env:
-          MAVEN_OPTS: >-
-            --add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED
-            --add-opens=java.base/java.lang=ALL-UNNAMED
-            --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
         run: |
           mvn clean package -DskipTests -pl webgoat-server -am
           ls -lh webgoat-server/target
