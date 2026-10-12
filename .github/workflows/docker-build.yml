@@ -24,6 +24,8 @@ jobs:
 
       # 3. Maven 빌드
       - name: Build WebGoat JAR
+        env:
+          MAVEN_OPTS: "--add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED"
         run: |
           mvn clean package -DskipTests -pl webgoat-server -am
           ls -lh webgoat-server/target
