@@ -28,6 +28,7 @@ jobs:
           MAVEN_OPTS: >-
             --add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED
             --add-opens=java.base/java.lang=ALL-UNNAMED
+            --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
         run: |
           mvn clean package -DskipTests -pl webgoat-server -am
           ls -lh webgoat-server/target
